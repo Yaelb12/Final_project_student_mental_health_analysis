@@ -104,11 +104,163 @@ def run_kmo_bartlett_for_group(df, cols, use_polychoric=True, dropna=True):
         "n_obs": sub.shape[0]
     }
 
-# Example usage (call this from your main script):
-# df_clean = pd.read_csv("your_data.csv")  # or however you load data
-# group1 = ["Sleep_Quality","Physical_Activity","Diet_Quality","Substance_Use"]
-# group2 = ["Stress_Level","Depression_Score","Anxiety_Score","Financial_Stress"]
-# res1 = run_kmo_bartlett_for_group(df_clean, group1, use_polychoric=True)
-# res2 = run_kmo_bartlett_for_group(df_clean, group2, use_polychoric=True)
-# print(res1["kmo_overall"], res1["bartlett"])
-# print(res2["kmo_overall"], res2["bartlett"])
+
+def compute_baseline(df, group, use_polychoric=True):
+    """Return baseline metrics for the full group."""
+    return run_kmo_bartlett_for_group(df, group, use_polychoric)
+
+def kmo_items(df, group, use_polychoric=True):
+    """Return KMO per item (Series)."""
+    res = run_kmo_bartlett_for_group(df, group, use_polychoric)
+    return res["kmo_per_item"]
+
+def evaluate_drops(df, group, use_polychoric=True):
+    """
+    Evaluate dropping each item: return DataFrame with kmo change and Bartlett p.
+    Rows sorted by kmo_change descending.
+    """
+    base = compute_baseline(df, group, use_polychoric)
+    rows = []
+    for item in group:
+        reduced = [g for g in group if g != item]
+        try:
+            res = run_kmo_bartlett_for_group(df, reduced, use_polychoric)
+            rows.append({
+                "dropped": item,
+                "kmo_after": res["kmo_overall"],
+                "kmo_change": res["kmo_overall"] - base["kmo_overall"],
+                "bartlett_p_after": res["bartlett"]["p_value"],
+                "n_obs": res["n_obs"]
+            })
+        except Exception:
+            rows.append({"dropped": item, "kmo_after": None, "kmo_change": None, "bartlett_p_after": None, "n_obs": None})
+    return pd.DataFrame(rows).sort_values("kmo_change", ascending=False).reset_index(drop=True)
+
+def apply_best_drop(df, group, out_csv="clean_data_reduced.csv", use_polychoric=True):
+    """
+    Drop the best single item only if KMO improves and Bartlett remains significant.
+    Returns (dropped_item, new_metrics) or (None, None).
+    """
+    eval_df = evaluate_drops(df, group, use_polychoric)
+    if eval_df.empty:
+        return None, None
+    best = eval_df.iloc[0]
+    if pd.notna(best["kmo_change"]) and best["kmo_change"] > 0 and best["bartlett_p_after"] is not None and best["bartlett_p_after"] < 0.05:
+        new_group = [g for g in group if g != best["dropped"]]
+        res = run_kmo_bartlett_for_group(df, new_group, use_polychoric)
+        # save only the reduced columns for downstream analysis
+        df[new_group].to_csv(out_csv, index=False)
+        return best["dropped"], res
+    return None, None
+
+ #Example usage (call this from your main script)
+if __name__ == "__main__":
+    # load data
+    df_clean = pd.read_csv("clean_data.csv")
+    group1 = ["Sleep_Quality","Physical_Activity","Diet_Quality","Substance_Use"]
+    group2 = ["Stress_Level","Depression_Score","Anxiety_Score","Financial_Stress"]
+
+    # 1) baseline KMO/Bartlett using polychoric if available
+    print("Running baseline KMO/Bartlett (polychoric if available)...")
+    res1 = run_kmo_bartlett_for_group(df_clean, group1, use_polychoric=True)
+    res2 = run_kmo_bartlett_for_group(df_clean, group2, use_polychoric=True)
+    print("Group1 KMO:", res1["kmo_overall"], "Bartlett p:", res1["bartlett"]["p_value"])
+    print("Group2 KMO:", res2["kmo_overall"], "Bartlett p:", res2["bartlett"]["p_value"])
+
+    # 2) KMO per item and correlation matrix (polychoric matrix if used)
+    print("\nKMO per item (group1):")
+    print(res1["kmo_per_item"])
+    print("\nCorrelation matrix used (group1):")
+    print(res1["corr_matrix"])
+
+    # 3) quick distribution checks to spot low-variance items
+    print("\nValue counts (top categories) and variance:")
+    for c in group1:
+        print(f"\nColumn: {c}")
+        print(df_clean[c].value_counts(normalize=True).head())
+        print("Variance:", df_clean[c].var())
+
+    # 4) evaluate single-item drops (polychoric)
+    print("\nEvaluate single-item drops (sorted by KMO improvement):")
+    eval_df = evaluate_drops(df_clean, group1, use_polychoric=True)
+    print(eval_df)
+
+    # 5) try recoding Substance_Use to binary and re-evaluate
+    print("\nTry recoding Substance_Use to binary and re-evaluate:")
+    df_clean["Substance_Use_bin"] = (df_clean["Substance_Use"] != 1).astype(int)
+    group_bin = ["Sleep_Quality","Physical_Activity","Diet_Quality","Substance_Use_bin"]
+    try:
+        res_bin = run_kmo_bartlett_for_group(df_clean, group_bin, use_polychoric=True)
+        print("Binary Substance KMO:", res_bin["kmo_overall"], "Bartlett p:", res_bin["bartlett"]["p_value"])
+        print("KMO per item (binary):\n", res_bin["kmo_per_item"])
+    except Exception as e:
+        print("Binary recode evaluation failed:", e)
+
+    # 6) try dropping 1 or 2 items (polychoric) and show top candidates
+    print("\nTry dropping 1 or 2 items (polychoric) — top results by KMO:")
+    from itertools import combinations
+    results = []
+    for r in (1,2):
+        for combo in combinations(group1, r):
+            reduced = [g for g in group1 if g not in combo]
+            try:
+                res = run_kmo_bartlett_for_group(df_clean, reduced, use_polychoric=True)
+                results.append((combo, res["kmo_overall"], res["bartlett"]["p_value"]))
+            except Exception:
+                pass
+    results_sorted = sorted(results, key=lambda x: x[1], reverse=True)
+    for item in results_sorted[:10]:
+        print(item)
+
+import pandas as pd
+import prince
+import numpy as np
+
+df = pd.read_csv("clean_data.csv")
+group = ["Sleep_Quality","Physical_Activity","Diet_Quality","Substance_Use"]
+df_cat = df[group].astype(str).dropna()   # drop rows with NA in these cols
+
+# quick sanity checks
+print("Shape:", df_cat.shape)
+for c in df_cat.columns:
+    print(c, "unique:", df_cat[c].nunique(), "top:", df_cat[c].value_counts(normalize=True).head().to_dict())
+
+# try MCA with numpy engine
+# MCA / fallback using one-hot + TruncatedSVD
+import pandas as pd
+import prince
+from sklearn.decomposition import TruncatedSVD
+from sklearn.preprocessing import OneHotEncoder
+import numpy as np
+
+df = pd.read_csv("clean_data.csv")
+group = ["Sleep_Quality","Physical_Activity","Diet_Quality","Substance_Use"]
+df_cat = df[group].astype(str).dropna()
+
+print("Shape:", df_cat.shape)
+for c in df_cat.columns:
+    print(c, "unique:", df_cat[c].nunique(), "top:", df_cat[c].value_counts(normalize=True).head().to_dict())
+
+# Try MCA with supported engine (try 'scipy' or 'sklearn')
+for engine in ('scipy', 'sklearn', 'fbpca'):
+    try:
+        print(f"\nTrying prince.MCA with engine='{engine}'")
+        mca = prince.MCA(n_components=4, n_iter=5, copy=True, check_input=True, engine=engine)
+        mca = mca.fit(df_cat)
+        print("Explained inertia:", mca.explained_inertia_)
+        scores = mca.transform(df_cat)
+        print("Scores shape:", scores.shape)
+        break
+    except Exception as e:
+        print(f"engine='{engine}' failed:", e)
+else:
+    # fallback: one-hot + TruncatedSVD
+    print("\nAll prince engines failed — falling back to one-hot + TruncatedSVD")
+    # use pandas.get_dummies (safe and simple)
+    X = pd.get_dummies(df_cat, drop_first=False).astype(int)
+    print("One-hot shape:", X.shape)
+    svd = TruncatedSVD(n_components=2, random_state=0)
+    comps = svd.fit_transform(X)
+    print("TruncatedSVD explained variance (approx):", svd.explained_variance_ratio_)
+    print("Components shape:", comps.shape)
+
