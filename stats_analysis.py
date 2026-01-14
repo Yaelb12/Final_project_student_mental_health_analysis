@@ -201,9 +201,8 @@ def regression_diagnostics(model):
     return out
 
 
-# ------------------------------
 # Logistic regression
-# ------------------------------
+
 def logistic_check(df, outcome='Anxiety_Score', threshold=3):
     logger.info("Running logistic regression")
     if outcome not in df.columns:
@@ -254,9 +253,8 @@ def logistic_check(df, outcome='Anxiety_Score', threshold=3):
         return None
 
 
-# ------------------------------
 # Plots
-# ------------------------------
+
 def plots(df):
     logger.info("Creating plots")
 
