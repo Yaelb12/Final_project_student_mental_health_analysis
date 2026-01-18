@@ -1,0 +1,4 @@
+Statistical_Test,Result_Value,Threshold_Requirement
+Bartlett Chi-Square,25.297,N/A
+Bartlett P-Value,0.0,p < 0.05
+KMO Score,0.487,Score > 0.6
