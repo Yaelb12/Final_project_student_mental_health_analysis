@@ -15,13 +15,10 @@ The project stands out by utilizing both **Supervised Statistical Testing** and 
 * **Risk Predictability**: An individual's academic major serves as a statistically significant predictor for the probability of "High-Risk" mental health outcomes.
 * **Internal Consistency**: Depression, Anxiety, and Stress metrics share a high degree of internal correlation, suggesting a single underlying factor of distress.
 
----
-
-
 ## 🛠 File Structure & Architecture
 The project follows a **Modular Clean Architecture** to ensure reproducibility and scientific rigor.
 
-plaintext
+```bash
 Final_project_student_mental_health_analysis/
 │
 ├── DATA/               # Data storage
@@ -45,7 +42,7 @@ Final_project_student_mental_health_analysis/
 ├── tests/              # Automated QA suite
 │   └── test_pipeline.py# 7-Stage Validation Suite
 │
-├── main.py             # Entry point
+├── main.py             # Entry point (Orchestrator)
 └── requirements.txt    # Project dependencies
 
 ## How to Run
