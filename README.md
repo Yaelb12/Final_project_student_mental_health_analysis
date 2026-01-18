@@ -44,7 +44,7 @@ The project stands out by utilizing both **Supervised Statistical Testing** and 
 * `predictive_modeling.py`: Generates the Risk Probability Report.
 * `stats_analysis.py`: Executes supervised tests and environment setup.
 * `unsupervised.py`: Performs EFA and dimensionality analysis.
-* `visualizer.py`: Produces scientific heatmaps and bar charts.
+* `visualization.py`: Produces scientific heatmaps and bar charts.
 * `tests/test_pipeline.py`: Automated testing suite.
 
 ---

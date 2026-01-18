@@ -49,7 +49,7 @@ def pre_process(df):
         # Filter out any values that are negative or greater than 5
         df_clean = df_clean[(df_clean[col] >= 0) & (df_clean[col] <= 5)]
    # Save the final cleaned dataset as st1.csv
-    df_clean.to_csv("clean_data.csv", index=False)
+    df_clean.to_csv("data/clean_data.csv", index=False)
     return df_clean
 
         

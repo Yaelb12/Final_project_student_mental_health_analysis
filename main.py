@@ -1,10 +1,10 @@
 import pandas as pd
-import data_cleaning  # Data pre-processing logic
-import stats_analysis # Supervised statistical logic
-import visualization     # Graphing and visualization logic
-import unsupervised   # Unsupervised analysis (EFA) logic
+from SRC import data_cleaning  # Data pre-processing logic
+from SRC import stats_analysis # Supervised statistical logic
+from SRC import visualization     # Graphing and visualization logic
+from SRC import unsupervised   # Unsupervised analysis (EFA) logic
 import warnings
-import predictive_modeling
+from SRC import predictive_modeling
 # This silences the specific pandas warnings you saw
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
@@ -20,7 +20,7 @@ def main():
     # Step 2: Data Pipeline - Load raw CSV and clean it
     # We load the raw database and apply mapping to categorical strings
     logger.info("Initializing Data Pipeline...")
-    raw_data = pd.read_csv("st_1.csv")
+    raw_data = pd.read_csv('data/st_1.csv')
     df_clean = data_cleaning.pre_process(raw_data)
     
     # Step 3: Analytics - Run T-Tests and ANOVA

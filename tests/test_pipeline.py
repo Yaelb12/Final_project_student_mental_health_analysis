@@ -2,10 +2,11 @@ import pytest
 import pandas as pd
 import numpy as np
 import os
-import data_cleaning
-import stats_analysis
-import unsupervised
-import visualization
+from SRC import data_cleaning
+from SRC import stats_analysis
+from SRC import visualization
+from SRC import unsupervised
+from SRC import predictive_modeling
 
 @pytest.fixture
 def sample_data():

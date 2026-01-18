@@ -135,3 +135,39 @@
 2026-01-18 18:43:13,607 INFO: EFA assumptions calculated. KMO: 0.487
 2026-01-18 18:43:13,607 WARNING: Data does not meet EFA requirements. Skipping Factor Analysis.
 2026-01-18 18:43:13,607 INFO: Full Research Pipeline Complete. All results available in 'reports/'.
+2026-01-18 19:06:39,987 INFO: New Session Started: Terminal output is now muted.
+2026-01-18 19:06:39,988 INFO: Initializing Data Pipeline...
+2026-01-18 19:06:40,043 INFO: --- STARTING T-TEST ANALYSIS (STEM vs Non-STEM) ---
+2026-01-18 19:06:40,051 INFO: T-Test summary saved successfully.
+2026-01-18 19:06:40,051 INFO: --- STARTING ANOVA ANALYSIS (By Course) ---
+2026-01-18 19:06:40,056 INFO: Significant variance detected in Stress_Level. Running Tukey HSD...
+2026-01-18 19:06:40,613 INFO: Significant variance detected in Depression_Score. Running Tukey HSD...
+2026-01-18 19:06:41,122 INFO: Significant variance detected in Anxiety_Score. Running Tukey HSD...
+2026-01-18 19:06:41,683 INFO: Starting Risk Prediction Modeling.
+2026-01-18 19:06:41,693 INFO: Predictive Risk Report saved to: reports/tables/risk_prediction_report.txt
+2026-01-18 19:06:42,063 INFO: Scientific bar chart for Stress_Level saved successfully.
+2026-01-18 19:06:42,282 INFO: Scientific bar chart for Anxiety_Score saved successfully.
+2026-01-18 19:06:42,559 INFO: Scientific bar chart for Depression_Score saved successfully.
+2026-01-18 19:06:42,791 INFO: Correlation heatmap generated and saved in reports/figures/.
+2026-01-18 19:06:42,791 INFO: --- STARTING UNSUPERVISED ANALYSIS PHASE ---
+2026-01-18 19:06:42,796 INFO: EFA assumptions calculated. KMO: 0.487
+2026-01-18 19:06:42,797 WARNING: Data does not meet EFA requirements. Skipping Factor Analysis.
+2026-01-18 19:06:42,797 INFO: Full Research Pipeline Complete. All results available in 'reports/'.
+2026-01-18 19:07:48,651 INFO: New Session Started: Terminal output is now muted.
+2026-01-18 19:07:48,652 INFO: Initializing Data Pipeline...
+2026-01-18 19:07:48,708 INFO: --- STARTING T-TEST ANALYSIS (STEM vs Non-STEM) ---
+2026-01-18 19:07:48,717 INFO: T-Test summary saved successfully.
+2026-01-18 19:07:48,718 INFO: --- STARTING ANOVA ANALYSIS (By Course) ---
+2026-01-18 19:07:48,723 INFO: Significant variance detected in Stress_Level. Running Tukey HSD...
+2026-01-18 19:07:49,314 INFO: Significant variance detected in Depression_Score. Running Tukey HSD...
+2026-01-18 19:07:49,865 INFO: Significant variance detected in Anxiety_Score. Running Tukey HSD...
+2026-01-18 19:07:50,468 INFO: Starting Risk Prediction Modeling.
+2026-01-18 19:07:50,476 INFO: Predictive Risk Report saved to: reports/tables/risk_prediction_report.txt
+2026-01-18 19:07:50,796 INFO: Scientific bar chart for Stress_Level saved successfully.
+2026-01-18 19:07:51,006 INFO: Scientific bar chart for Anxiety_Score saved successfully.
+2026-01-18 19:07:51,192 INFO: Scientific bar chart for Depression_Score saved successfully.
+2026-01-18 19:07:51,387 INFO: Correlation heatmap generated and saved in reports/figures/.
+2026-01-18 19:07:51,387 INFO: --- STARTING UNSUPERVISED ANALYSIS PHASE ---
+2026-01-18 19:07:51,392 INFO: EFA assumptions calculated. KMO: 0.487
+2026-01-18 19:07:51,392 WARNING: Data does not meet EFA requirements. Skipping Factor Analysis.
+2026-01-18 19:07:51,393 INFO: Full Research Pipeline Complete. All results available in 'reports/'.
