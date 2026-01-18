@@ -20,12 +20,12 @@ def pre_process(df):
     substance_mapping= {'Never':1, 'Occasionally':2,'Frequently':3}
 
     # Apply the mapping to the respective columns
-    df_clean['Sleep_Quality'] = df_clean['Sleep_Quality'].replace(sleep_mapping)
-    df_clean['Social_Support'] = df_clean['Social_Support'].replace(support_mapping)
-    df_clean['Physical_Activity']=df_clean['Physical_Activity'].replace(physical_mapping)
-    df_clean['Diet_Quality']=df_clean['Diet_Quality'].replace(diet_mapping)
-    df_clean['Counseling_Service_Use']=df_clean['Counseling_Service_Use'].replace(counseling_mapping)
-    df_clean['Substance_Use']=df_clean['Substance_Use'].replace(substance_mapping)
+    df_clean['Sleep_Quality'] = df_clean['Sleep_Quality'].map(sleep_mapping)
+    df_clean['Social_Support'] = df_clean['Social_Support'].map(support_mapping)
+    df_clean['Physical_Activity']=df_clean['Physical_Activity'].map(physical_mapping)
+    df_clean['Diet_Quality']=df_clean['Diet_Quality'].map(diet_mapping)
+    df_clean['Counseling_Service_Use']=df_clean['Counseling_Service_Use'].map(counseling_mapping)
+    df_clean['Substance_Use']=df_clean['Substance_Use'].map(substance_mapping)
 
 
     # level 4a- Handling Outliers using IQR for continuous variables

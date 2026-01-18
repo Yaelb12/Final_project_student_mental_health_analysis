@@ -3,6 +3,9 @@ import data_cleaning  # Data pre-processing logic
 import stats_analysis # Supervised statistical logic
 import visualizer     # Graphing and visualization logic
 import unsupervised   # Unsupervised analysis (EFA) logic
+import warnings
+# This silences the specific pandas warnings you saw
+warnings.simplefilter(action='ignore', category=FutureWarning)
 
 def main():
     """

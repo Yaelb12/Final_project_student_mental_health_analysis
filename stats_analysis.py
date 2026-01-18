@@ -3,29 +3,35 @@ import numpy as np
 import logging
 import os
 import sys
+import warnings
 from scipy import stats
 from statsmodels.stats.multicomp import pairwise_tukeyhsd
 
 def setup_environment():
     """
-    Sets up the research environment by creating output folders 
-    and initializing a dual-stream logger (file and console).
+    Configures the logging system to save all progress to a file ONLY.
+    This keeps the terminal clean while maintaining a full research record.
     """
-    # Create the folder structure for results if it doesn't exist
-    os.makedirs("reports/tables", exist_ok=True)
-    os.makedirs("reports/figures", exist_ok=True)
-    
-    # Configure the logging format and target files
-    log_format = "%(asctime)s %(levelname)s: %(message)s"
+    # Create necessary directories
+    for folder in ['reports/figures', 'reports/tables', 'logs']:
+        os.makedirs(folder, exist_ok=True)
+
+    # Configure the logger - ONLY using FileHandler
     logging.basicConfig(
         level=logging.INFO,
-        format=log_format,
+        format='%(asctime)s %(levelname)s: %(message)s',
         handlers=[
-            logging.FileHandler("reports/analysis_log.txt", encoding='utf-8'),
-            logging.StreamHandler(sys.stdout) # Output to terminal
+            # This handler saves everything to the log file in the logs folder
+            logging.FileHandler("logs/pipeline.log", encoding='utf-8')
         ]
     )
-    return logging.getLogger(__name__)
+    
+    # Silence all terminal warnings (the yellow text)
+    warnings.filterwarnings("ignore", category=FutureWarning)
+    
+    logger = logging.getLogger(__name__)
+    logger.info("New Session Started: Terminal output is now muted.")
+    return logger
 
 def calculate_cohen_d(group1, group2):
     """
