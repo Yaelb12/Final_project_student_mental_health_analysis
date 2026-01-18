@@ -97,3 +97,45 @@ def test_environment_setup():
     assert os.path.exists("logs/pipeline.log")
     assert os.path.isdir("reports/figures")
     assert os.path.isdir("reports/tables")
+
+
+# --- Stage 6: Empirical Risk Prediction Analysis ---
+
+# --- Stage 6: Predictive Risk Modeling ---
+
+def test_risk_report_file_generation(sample_data):
+    """
+    Technical Test: Verifies that the predictive pipeline executes 
+    without errors and physically creates the report file.
+    """
+    logger = stats_analysis.setup_environment()
+    df_clean = data_cleaning.pre_process(sample_data)
+    
+    # Run the prediction pipeline
+    predictive_modeling.run_risk_prediction_pipeline(df_clean, logger)
+    
+    report_path = "reports/tables/risk_prediction_report.txt"
+    assert os.path.exists(report_path), "The risk assessment report file was not generated."
+
+
+def test_risk_calculation_accuracy(sample_data):
+    """
+    Logic Test: Validates the empirical probability calculation.
+    Checks if the percentage in the report matches a manual calculation.
+    """
+    logger = stats_analysis.setup_environment()
+    df_clean = data_cleaning.pre_process(sample_data)
+    predictive_modeling.run_risk_prediction_pipeline(df_clean, logger)
+    
+    # Manual Calculation for 'Engineering' Stress Risk
+    eng_group = df_clean[df_clean['Course'] == 'Engineering']
+    high_risk_count = len(eng_group[eng_group['Stress_Level'] > 3])
+    
+    # Formula: (Number of High Risk Students / Total Students in Course) * 100
+    expected_val = (high_risk_count / len(eng_group)) * 100
+    expected_str = f"{expected_val:.1f}%"
+    
+    # Verify that the calculated value is correctly written in the report
+    with open("reports/tables/risk_prediction_report.txt", "r") as f:
+        report_content = f.read()
+        assert expected_str in report_content, f"Math error: Expected {expected_str} not found."
