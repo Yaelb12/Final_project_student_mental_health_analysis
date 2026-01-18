@@ -1,0 +1,33 @@
+2026-01-18 11:14:33,349 INFO: clean_data.csv loaded successfully.
+2026-01-18 11:14:33,349 INFO: --- STARTING T-TEST ANALYSIS (STEM vs Non-STEM) ---
+2026-01-18 11:14:33,353 INFO: T-Test completed for Stress_Level
+2026-01-18 11:14:33,356 INFO: T-Test completed for Depression_Score
+2026-01-18 11:14:33,359 INFO: T-Test completed for Anxiety_Score
+2026-01-18 11:14:33,365 INFO: T-Test table saved to reports/tables/t_test_results.csv
+2026-01-18 11:14:33,365 INFO: 
+--- STARTING ANOVA ANALYSIS (By Course) ---
+2026-01-18 11:14:33,376 INFO: ANOVA for Stress_Level: F=149.938, p=0.0000
+2026-01-18 11:14:33,376 INFO: Significant variance in Stress_Level. Running Tukey HSD...
+2026-01-18 11:14:33,926 INFO: Significant pairs for Stress_Level saved to reports/tables/tukey_Stress_Level.csv
+2026-01-18 11:14:33,931 INFO: ANOVA for Depression_Score: F=103.640, p=0.0000
+2026-01-18 11:14:33,931 INFO: Significant variance in Depression_Score. Running Tukey HSD...
+2026-01-18 11:14:34,511 INFO: Significant pairs for Depression_Score saved to reports/tables/tukey_Depression_Score.csv
+2026-01-18 11:14:34,523 INFO: ANOVA for Anxiety_Score: F=123.739, p=0.0000
+2026-01-18 11:14:34,524 INFO: Significant variance in Anxiety_Score. Running Tukey HSD...
+2026-01-18 11:14:35,161 INFO: Significant pairs for Anxiety_Score saved to reports/tables/tukey_Anxiety_Score.csv
+2026-01-18 11:14:35,162 INFO: 
+All statistical analyses completed. Check the 'reports' folder.
+2026-01-18 11:57:03,907 INFO: Initializing Data Pipeline...
+2026-01-18 11:57:27,320 INFO: Initializing Data Pipeline...
+2026-01-18 11:58:46,777 INFO: Initializing Data Pipeline...
+2026-01-18 11:58:46,897 INFO: --- STARTING T-TEST ANALYSIS (STEM vs Non-STEM) ---
+2026-01-18 11:58:46,914 INFO: T-Test summary saved successfully.
+2026-01-18 11:58:46,915 INFO: --- STARTING ANOVA ANALYSIS (By Course) ---
+2026-01-18 11:58:46,923 INFO: Significant variance detected in Stress_Level. Running Tukey HSD...
+2026-01-18 11:58:47,563 INFO: Significant variance detected in Depression_Score. Running Tukey HSD...
+2026-01-18 11:58:48,216 INFO: Significant variance detected in Anxiety_Score. Running Tukey HSD...
+2026-01-18 11:58:48,886 INFO: --- STARTING DATA VISUALIZATION PROCESS ---
+2026-01-18 11:58:49,241 INFO: Visualized chart for Stress_Level saved.
+2026-01-18 11:58:49,459 INFO: Visualized chart for Anxiety_Score saved.
+2026-01-18 11:58:49,685 INFO: Visualized chart for Depression_Score saved.
+2026-01-18 11:58:49,685 INFO: Pipeline Complete. All reports are available in the 'reports' folder.

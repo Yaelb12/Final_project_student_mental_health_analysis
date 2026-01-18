@@ -1,0 +1,4 @@
+Variable,T-Statistic,P-Value,Cohen_d,Significant
+Stress_Level,13.461,0.0,0.332,True
+Depression_Score,6.643,0.0,0.164,True
+Anxiety_Score,-14.673,0.0,-0.361,True

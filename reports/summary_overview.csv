@@ -1,2 +1,0 @@
-pointbiserial,welch,mannwhitney,regression_coef_saved,regression_diag,logit_saved
-"{'r': -0.17447005606760618, 'p': 5.070251776942333e-48, 'n': 6860}","{'n1': 4110, 'n0': 2750, 't': -14.619273815225576, 'p': 1.463993184038762e-47, 'cohens_d': -0.36149895926832126}","{'U': 4509167.5, 'p': 3.492348711147191e-47}",False,"{'breusch_pvalue': 0.5628358295253718, 'VIF': {}}",False

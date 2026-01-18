@@ -1,0 +1,6 @@
+group1,group2,meandiff,p-adj,lower,upper,reject
+Business,Medical,1.1116,0.0,0.9175,1.3058,True
+Computer Science,Medical,1.1647,0.0,0.9942,1.3351,True
+Engineering,Medical,1.1184,0.0,0.9498,1.2869,True
+Law,Medical,1.0806,0.0,0.9252,1.236,True
+Medical,Others,-1.1531,0.0,-1.3472,-0.9589,True
