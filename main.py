@@ -4,6 +4,7 @@ import stats_analysis # Supervised statistical logic
 import visualizer     # Graphing and visualization logic
 import unsupervised   # Unsupervised analysis (EFA) logic
 import warnings
+import predictive_modeling
 # This silences the specific pandas warnings you saw
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
@@ -27,6 +28,7 @@ def main():
     metrics = ['Stress_Level', 'Depression_Score', 'Anxiety_Score']
     stats_analysis.run_t_tests(df_clean, metrics, logger)
     stats_analysis.run_anova_and_tukey(df_clean, metrics, logger)
+    predictive_modeling.run_risk_prediction_pipeline(df_clean, logger)
     
     # Step 4: Visualization - Generate and save scientific plots
     # Creates sorted bar charts with significance markers

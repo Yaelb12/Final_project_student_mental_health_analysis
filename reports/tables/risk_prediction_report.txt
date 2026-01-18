@@ -1,0 +1,34 @@
+STUDENT MENTAL HEALTH: RISK PREDICTION REPORT
+==================================================
+Criteria: 'High Risk' defined as a clinical score of 4 or 5.
+
+--- PREDICTION PROFILE: DEPRESSION ---
+Academic Major            | Risk Chance (%)
+---------------------------------------------
+Computer Science          |         52.2%
+Others                    |         21.0%
+Law                       |         20.1%
+Engineering               |         20.0%
+Business                  |         19.9%
+Medical                   |         19.5%
+
+--- PREDICTION PROFILE: ANXIETY ---
+Academic Major            | Risk Chance (%)
+---------------------------------------------
+Law                       |         48.8%
+Medical                   |         20.5%
+Engineering               |         19.9%
+Others                    |         19.3%
+Computer Science          |         18.9%
+Business                  |         18.7%
+
+--- PREDICTION PROFILE: STRESS ---
+Academic Major            | Risk Chance (%)
+---------------------------------------------
+Medical                   |         49.1%
+Law                       |         21.6%
+Others                    |         19.9%
+Business                  |         19.4%
+Engineering               |         19.0%
+Computer Science          |         18.0%
+
