@@ -5,7 +5,7 @@ import os
 import data_cleaning
 import stats_analysis
 import unsupervised
-import visualizer
+import visualization
 
 @pytest.fixture
 def sample_data():
@@ -83,7 +83,7 @@ def test_visualization_files(sample_data):
     logger = stats_analysis.setup_environment()
     df_clean = data_cleaning.pre_process(sample_data)
     
-    visualizer.run_all_visualizations(df_clean, logger)
+    visualization.run_all_visualizations(df_clean, logger)
     
     assert os.path.exists("reports/figures/correlation_heatmap.png")
     assert os.path.exists("reports/figures/Stress_Level_comparison.png")

@@ -1,7 +1,7 @@
 import pandas as pd
 import data_cleaning  # Data pre-processing logic
 import stats_analysis # Supervised statistical logic
-import visualizer     # Graphing and visualization logic
+import visualization     # Graphing and visualization logic
 import unsupervised   # Unsupervised analysis (EFA) logic
 import warnings
 import predictive_modeling
@@ -32,11 +32,11 @@ def main():
     
     # Step 4: Visualization - Generate and save scientific plots
     # Creates sorted bar charts with significance markers
-    visualizer.run_all_visualizations(df_clean, logger)
+    visualization.run_all_visualizations(df_clean, logger)
 
     # Step 5: Unsupervised Analysis - Explore Latent Factor structure (EFA)
     # Checks for correlations and combines indicators into a single distress factor
-    visualizer.plot_correlation_heatmap(df_clean, metrics, logger)
+    visualization.plot_correlation_heatmap(df_clean, metrics, logger)
     unsupervised.run_unsupervised_analysis(df_clean, metrics, logger)
 
     logger.info("Full Research Pipeline Complete. All results available in 'reports/'.")
