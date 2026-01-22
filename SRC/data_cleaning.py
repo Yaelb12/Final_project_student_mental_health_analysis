@@ -43,7 +43,7 @@ def pre_process(df):
 
     # level 4b- Logical Range Validation for score columns
     # Ensure that scores like Stress, Depression, and Anxiety are within the valid range [0, 5]
-    score_columns = ['Stress_Level', 'Depression_Score', 'Anxiety_Score', 'Financial_Stress']
+    score_columns = ['Stress_Level', 'Depression_Score', 'Anxiety_Score']
 
     for col in score_columns:
         # Filter out any values that are negative or greater than 5
