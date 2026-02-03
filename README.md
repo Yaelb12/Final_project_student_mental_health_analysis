@@ -79,8 +79,10 @@ Since the broad STEM classification failed to provide strong predictive power, w
 * **Depression**: Showed the highest elevation among **Computer Science** students.
 * **Stress**: Was most significant in **Medical** and **Engineering** tracks, correlating with high clinical and technical workloads.
 
+*Note: While statistical analysis and visualization were conducted for all metrics, only the Anxiety distribution is presented below as a representative example of the major-specific distress profiles.*
+
 ![Anxiety Comparison](reports/figures/Anxiety_Score_comparison.png)
-*Figure 2: Statistical comparison of Anxiety scores across disciplines, highlighting the significant elevation in specific professional tracks.*
+*Figure 1: Statistical comparison of Anxiety scores across disciplines, highlighting the significant elevation in specific professional tracks.*
 
 ### 3. Advanced Statistical Diagnostics: Factor Analysis (EFA)
 
