@@ -117,3 +117,8 @@ Due to the low KMO score, it was determined that the common variance between the
 | **Medical**          |      19.5%      |    20.5%     |  **49.1%**  |
 | **Engineering**      |      20.0%      |    19.9%     |    19.0%    |
 | **Others**           |      21.0%      |    19.3%     |    19.9%    |
+
+
+
+## Summary and recommendations
+In conclusion, the study shows that the simplistic distinction between STEM subjects and the humanities is insufficient to understand mental well-being. Instead, resources and support programs should be directed to specific courses that constitute clear stressors. It is recommended that academic institutions examine the structure of studies in law, medicine, and computer science, with the aim of improving the quality of life of students in these fields.
