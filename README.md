@@ -6,6 +6,8 @@
 ## Project Overview
 This research analyzes how academic majors and lifestyle factors influence student mental health (**Depression, Anxiety, and Stress**). 
 
+The current study was based on a large dataset including 7,022 student observations, encompassing demographic variables, academic characteristics, and measures of mental well-being.
+
 The project uses a data-driven pipeline to identify high-risk student populations through:
 * **Statistical Analysis:** Comparing distress levels across disciplines (e.g., Law, Medicine, and Engineering).
 * **Risk Prediction:** A custom model that calculates the probability of clinical mental health outcomes.
