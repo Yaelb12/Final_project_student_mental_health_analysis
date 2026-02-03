@@ -76,7 +76,8 @@ Law students exhibit the highest average anxiety scores, a finding confirmed as 
 
 ![Anxiety Comparison](reports/figures/Anxiety_Score_comparison.png)
 
-*Figure 1: Average Anxiety Scores by Course.*
+*Figure 1: Average Anxiety Scores by Course.*<img width="800" height="600" alt="correlation_heatmap" src="https://github.com/user-attachments/assets/c72ef889-d2fe-4844-9e27-970bf8391629" />
+
 
 ### 2. Internal Consistency Matrix
 
