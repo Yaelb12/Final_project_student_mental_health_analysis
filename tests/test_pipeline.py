@@ -103,8 +103,6 @@ def test_efa_outputs(sample_data):
 
 # --- Stage 4: Visualization & Files ---
 
-# --- Stage 4: Visualization & Files ---
-
 def test_visualization_files(sample_data):
     """
     Verifies that the main visualization orchestrator runs successfully.
@@ -150,8 +148,6 @@ def test_environment_setup():
     assert os.path.isdir("reports/figures")
     assert os.path.isdir("reports/tables")
 
-
-# --- Stage 6: Empirical Risk Prediction Analysis ---
 
 # --- Stage 6: Predictive Risk Modeling ---
 
