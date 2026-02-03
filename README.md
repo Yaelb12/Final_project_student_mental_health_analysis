@@ -3,17 +3,23 @@
 
 ---
 
-## 📋 Project Overview
-This research project implements a full, automated data science pipeline to analyze factors affecting student mental health. Developed as part of the **Neuroscience curriculum**, the study explores the relationship between academic majors, lifestyle habits, and psychological distress levels: **Depression, Anxiety, and Stress**.
+## Project Overview
+This research analyzes how academic majors and lifestyle factors influence student mental health (**Depression, Anxiety, and Stress**). 
 
-The project stands out by utilizing both **Supervised Statistical Testing** and a custom **Empirical Risk Prediction Model** to identify vulnerable student populations.
-
+The project uses a data-driven pipeline to identify high-risk student populations through:
+* **Statistical Analysis:** Comparing distress levels across disciplines (e.g., Law, Medicine, and Engineering).
+* **Risk Prediction:** A custom model that calculates the probability of clinical mental health outcomes.
+* **Scientific Validation:** Using Factor Analysis (EFA) to verify the internal consistency of the psychological metrics.
 ---
 
 ## 🔬 Key Research Hypotheses
-* **Academic Pressure**: Students in STEM fields (Engineering, Medical, Computing) exhibit significantly higher risk profiles for psychological distress.
-* **Risk Predictability**: An individual's academic major serves as a statistically significant predictor for the probability of "High-Risk" mental health outcomes.
-* **Internal Consistency**: Depression, Anxiety, and Stress metrics share a high degree of internal correlation, suggesting a single underlying factor of distress.
+* **H1:**: Academic Discipline Impact: Students enrolled in STEM fields will report higher levels of psychological distress (Stress, Anxiety, and Depression) compared to peers in the Humanities and Social Sciences, driven by higher academic workloads.
+
+* **H2:**: Dimensionality Reduction: Integrating individual distress metrics into a single "Mental Well-being Index" (using dimensionality reduction techniques) will reveal statistically significant differences between groups that are not apparent when analyzing each metric separately.
+
+* **Phase 2:**: Revised Hypothesis (Post-Analysis)
+H3: Intra-STEM Variance: Following the rejection of H1, we hypothesize that significant variance exists within the STEM category. Specifically, courses with intensive clinical or technical demands (e.g., Medicine and Engineering) will exhibit higher distress levels compared to other academic tracks.
+
 
 ## 🛠 File Structure & Architecture
 The project follows a **Modular Clean Architecture** to ensure reproducibility and scientific rigor.
@@ -47,8 +53,6 @@ Final_project_student_mental_health_analysis/
 
 ```
 
-![Anxiety Comparison](reports/figures/Anxiety_Score_comparison.png)
-
 ## How to Run
 1. **Install Dependencies**: 
    `pip install -r requirements.txt`
@@ -67,31 +71,40 @@ The initial stage of the research investigated whether the broad classification 
 * **Statistical Observation:** While a T-Test revealed a statistically significant difference in distress scores between the groups ($p < 0.05$), the effect size and correlation coefficient were remarkably low ($r \approx 0.18$). 
 * **Inference:** This indicates that while STEM students may face distinct pressures, the "STEM" label itself is a weak predictor of clinical outcomes. This finding necessitated a more granular approach, breaking down the data by specific academic majors.
 
-### 2. Discipline-Specific Risk Profiles
-Upon analyzing individual majors, the model identified specific "hotspots" where students exhibited significantly higher risks for clinical-level scores (Assessment Score $\ge$ 4). The analysis identified the three most vulnerable disciplines for each metric:
 
-| Assessment Metric | Most Significant Disciplines | Observed Risk Elevation |
-| :--- | :--- | :--- |
-| **Depression** | Computer Science, Law, Engineering | Significant clustering in high-workload STEM and Professional degrees. |
-| **Anxiety** | Law, Medical, Arts & Design | High prevalence in fields with high-stakes licensing and performance requirements. |
-| **Stress** | Medical, Biochemistry, Engineering | Strongest correlation with disciplines requiring intensive laboratory and clinical hours. |
+### 2. Granular Analysis: Major-Specific Distress Profiles
+Since the broad STEM classification failed to provide strong predictive power, we performed a granular breakdown by academic major. The results revealed that psychological distress is not uniform across disciplines; instead, each metric (Depression, Anxiety, and Stress) exhibited a distinct "peak" major where risk was significantly more prevalent.
 
-### 3. Exploratory Factor Analysis (EFA) & Internal Consistency
-To determine if Depression, Anxiety, and Stress represent distinct psychological constructs or a single underlying factor of "Academic Distress," we conducted an Exploratory Factor Analysis (EFA).
+* **Anxiety**: Specifically peaked in **Law** students, likely reflecting the high-stakes nature of the field.
+* **Depression**: Showed the highest elevation among **Computer Science** students.
+* **Stress**: Was most significant in **Medical** and **Engineering** tracks, correlating with high clinical and technical workloads.
 
-* **Pre-test Diagnostics:** * **Kaiser-Meyer-Olkin (KMO) Measure:** $0.72$, indicating "Middling to Good" sampling adequacy for factor analysis.
-    * **Bartlett’s Test of Sphericity:** $\chi^2$ significance at $p < 0.001$, confirming that the variables are related and suitable for structure detection.
-* **Correlation Matrix:** A Pearson correlation analysis showed strong internal consistency ($r > 0.65$) between the three metrics.
-* **Factor Loading:** The EFA confirmed that these three variables load onto a single primary factor, suggesting that for this student population, these symptoms often manifest as a unified psychological response to academic environmental stressors.
+![Anxiety Comparison](reports/figures/Anxiety_Score_comparison.png)
+*Figure 2: Statistical comparison of Anxiety scores across disciplines, highlighting the significant elevation in specific professional tracks.*
 
-### 4. Predictive Modeling Results
-Using a custom-built Empirical Risk Model, we calculated the probability of a student reaching a clinical threshold based on their academic profile. The model successfully identified that certain majors (e.g., Computer Science) have a predictive probability for "High-Risk" depression scores exceeding $50\%$.
+# 🔬 Advanced Statistical Diagnostics: Factor Analysis (EFA)
+
+To determine if **Depression**, **Anxiety**, and **Stress** represent a single underlying factor of "Academic Distress" (Hypothesis 2), we conducted an Exploratory Factor Analysis (EFA) to test the feasibility of dimensionality reduction.
+
+### **Diagnostic Results & Structural Integrity**
+While the preliminary tests indicated some relationships between variables, the overall structure did not meet the academic requirements for a unified model:
+
+* **Bartlett’s Test of Sphericity:** Achieved significance ($\chi^2 = 25.29, p < 0.001$), confirming the presence of basic correlations suitable for structure detection.
+* **Kaiser-Meyer-Olkin (KMO) Measure:** Recorded at **0.487**. This value is below the acceptable threshold of **0.60**, indicating that the sampling adequacy is insufficient for a stable factor analysis.
+* **Correlation Matrix:** As visualized in the heatmap, the inter-variable correlations were not strong enough to support the formation of a reliable latent construct.
+
+
+
+### **Conclusion: Rejection of Hypothesis 2**
+Due to the low KMO score, it was determined that the common variance between the three metrics was insufficient to justify a single "Academic Distress" factor.
+
+**Consequently, Hypothesis 2 was rejected.** To maintain scientific rigor and ensure the accuracy of our findings, we proceeded with the analysis using the three distinct metrics independently 
 
 ---
 
 ## Predictive Risk Profile: Academic Hotspots
 
-The table below identifies disciplines where the risk of clinical mental health outcomes is significantly elevated based on our predictive model (Clinical Score $\ge$ 4).
+  The following table presents empirical risk Probability (%) for Clinical Distress (Score $\ge$ 4) by Major
 
 | Academic Major       | Depression Risk | Anxiety Risk | Stress Risk |
 | :------------------- | :-------------: | :----------: | :---------: |
