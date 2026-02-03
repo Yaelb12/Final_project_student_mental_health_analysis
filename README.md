@@ -56,6 +56,8 @@ Final_project_student_mental_health_analysis/
 
 ---
 
+---
+
 ## Statistical Analysis and Key Findings
 
 The research implemented a multi-stage statistical pipeline, progressing from broad categorical comparisons to a granular analysis of academic disciplines and a structural evaluation of psychological metrics.
@@ -75,15 +77,21 @@ Upon analyzing individual majors, the model identified specific "hotspots" where
 | **Stress** | Medical, Biochemistry, Engineering | Strongest correlation with disciplines requiring intensive laboratory and clinical hours. |
 
 ### 3. Exploratory Factor Analysis (EFA) & Internal Consistency
-To determine if Depression, Anxiety, and Stress represent distinct psychological constructs or a single underlying factor of "Academic Distress" within this population, we conducted an Exploratory Factor Analysis.
+To determine if Depression, Anxiety, and Stress represent distinct psychological constructs or a single underlying factor of "Academic Distress," we conducted an Exploratory Factor Analysis (EFA).
 
 * **Pre-test Diagnostics:** * **Kaiser-Meyer-Olkin (KMO) Measure:** $0.72$, indicating "Middling to Good" sampling adequacy for factor analysis.
     * **Bartlett’s Test of Sphericity:** $\chi^2$ significance at $p < 0.001$, confirming that the variables are related and suitable for structure detection.
 * **Correlation Matrix:** A Pearson correlation analysis showed strong internal consistency ($r > 0.65$) between the three metrics.
-* **Factor Loading:** The EFA confirmed that these three variables load onto a single primary factor, suggesting that for the target student population, these symptoms often manifest as a unified psychological response to academic environmental stressors.
-## 📊 Predictive Risk Profile: Academic Hotspots
+* **Factor Loading:** The EFA confirmed that these three variables load onto a single primary factor, suggesting that for this student population, these symptoms often manifest as a unified psychological response to academic environmental stressors.
 
-Our model identifies disciplines where the risk of clinical mental health outcomes is significantly elevated (Clinical Score $\ge$ 4).
+### 4. Predictive Modeling Results
+Using a custom-built Empirical Risk Model, we calculated the probability of a student reaching a clinical threshold based on their academic profile. The model successfully identified that certain majors (e.g., Computer Science) have a predictive probability for "High-Risk" depression scores exceeding $50\%$.
+
+---
+
+## Predictive Risk Profile: Academic Hotspots
+
+The table below identifies disciplines where the risk of clinical mental health outcomes is significantly elevated based on our predictive model (Clinical Score $\ge$ 4).
 
 | Academic Major       | Depression Risk | Anxiety Risk | Stress Risk |
 | :------------------- | :-------------: | :----------: | :---------: |
