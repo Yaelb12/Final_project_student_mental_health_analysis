@@ -78,7 +78,6 @@ Law students exhibit the highest average anxiety scores, a finding confirmed as 
 *Figure 1: Average Anxiety Scores by Course.*
 
 ### 2. Internal Consistency Matrix
-
 The high correlation between Depression, Anxiety, and Stress metrics ($r > 0.6$) justifies the use of Factor Analysis (EFA).
 
 ![Correlation Heatmap](reports/figures/correlation_heatmap.png)
