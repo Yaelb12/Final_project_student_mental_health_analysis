@@ -52,3 +52,26 @@ Final_project_student_mental_health_analysis/
    `python main.py`
 3. **Run Automated Tests**: 
    `python -m pytest tests/`
+
+## 📊 Predictive Risk Profile: Academic Hotspots
+Based on our predictive model, we identified specific academic disciplines where the risk of clinical mental health outcomes is significantly elevated.
+
+| Academic Major | Depression Risk | Anxiety Risk | Stress Risk |
+| :--- | :---: | :---: | :---: |
+| **Computer Science** | **52.2%** | 18.9% | 18.0% |
+| **Law** | 20.1% | **48.8%** | 21.6% |
+| **Medical** | 19.5% | 20.5% | **49.1%** |
+| **Engineering** | 20.0% | 19.9% | 19.0% |
+| **Others** | 21.0% | 19.3% | 19.9% |
+
+> **Note:** "High Risk" is defined as a clinical score of 4 or 5 on the standardized assessment scale.
+
+---
+
+## 📉 Anxiety Levels Across Disciplines
+The following visualization highlights the significant disparity in anxiety levels, with **Law students** showing the highest average scores compared to all other faculties.
+
+<div align="center">
+  <img src="reports/figures/Anxiety_Score_comperarison.png" width="800" alt="Anxiety Score Comparison">
+  <br>
+  <em>Figure 1: Comparison of Average Anxiety Scores. The red asterisk (*) denotes statistical significance (p < 0.05).</em>
