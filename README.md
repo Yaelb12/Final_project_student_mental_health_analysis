@@ -73,7 +73,7 @@ Our model identifies disciplines where the risk of clinical mental health outcom
 
 Law students exhibit the highest average anxiety scores, a finding confirmed as statistically significant in our post-hoc analysis.
 
-![Anxiety Comparison](reports/figures/Anxiety_Score_comparison.png)
+![Anxiety Comparison](./reports/figures/Anxiety_Score_comparison.png)
 
 *Figure 1: Average Anxiety Scores by Course.*
 
@@ -81,6 +81,6 @@ Law students exhibit the highest average anxiety scores, a finding confirmed as 
 
 The high correlation between Depression, Anxiety, and Stress metrics ($r > 0.6$) justifies the use of Factor Analysis (EFA).
 
-![Correlation Heatmap](reports/figures/correlation_heatmap.png)
+![Correlation Heatmap](./reports/figures/correlation_heatmap.png)
 
 *Figure 2: Pearson Correlation Heatmap of Mental Health Metrics.*
