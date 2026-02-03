@@ -54,24 +54,35 @@ Final_project_student_mental_health_analysis/
    `python -m pytest tests/`
 
 ## 📊 Predictive Risk Profile: Academic Hotspots
-Based on our predictive model, we identified specific academic disciplines where the risk of clinical mental health outcomes is significantly elevated.
+Our model identifies disciplines where the risk of clinical mental health outcomes is significantly elevated (Clinical Score $\ge$ 4).
 
 | Academic Major | Depression Risk | Anxiety Risk | Stress Risk |
 | :--- | :---: | :---: | :---: |
-| **Computer Science** | **52.2%** | 18.9% | 18.0% |
-| **Law** | 20.1% | **48.8%** | 21.6% |
-| **Medical** | 19.5% | 20.5% | **49.1%** |
-| **Engineering** | 20.0% | 19.9% | 19.0% |
-| **Others** | 21.0% | 19.3% | 19.9% |
-
-> **Note:** "High Risk" is defined as a clinical score of 4 or 5 on the standardized assessment scale.
+| 💻 **Computer Science** | **52.2%** | 18.9% | 18.0% |
+| ⚖️ **Law** | 20.1% | **48.8%** | 21.6% |
+| 🩺 **Medical** | 19.5% | 20.5% | **49.1%** |
+| 🏗️ **Engineering** | 20.0% | 19.9% | 19.0% |
+| 🌐 **Others** | 21.0% | 19.3% | 19.9% |
 
 ---
 
-## 📉 Anxiety Levels Across Disciplines
-The following visualization highlights the significant disparity in anxiety levels, with **Law students** showing the highest average scores compared to all other faculties.
+## 📉 Research Visualizations
 
-<div align="center">
-  <img src="reports/figures/Anxiety_Score_comperarison.png" width="800" alt="Anxiety Score Comparison">
-  <br>
-  <em>Figure 1: Comparison of Average Anxiety Scores. The red asterisk (*) denotes statistical significance (p < 0.05).</em>
+### 1. Anxiety Levels Across Disciplines
+Law students exhibit the highest average anxiety scores, a finding confirmed as statistically significant in our post-hoc analysis.
+
+![Anxiety Comparison](reports/figures/Anxiety_Score_comparison.png)
+
+*Figure 1: Average Anxiety Scores by Course. The red asterisk (*) denotes $p < 0.05$.*
+
+### 2. Internal Consistency Matrix
+The high correlation between Depression, Anxiety, and Stress metrics ($r > 0.6$) justifies the use of Factor Analysis (EFA).
+
+![Correlation Heatmap](reports/figures/correlation_heatmap.png)
+
+*Figure 2: Pearson Correlation Heatmap of Mental Health Metrics.*
+
+---
+
+## 🛡️ Scientific Rigor & Validation
+This project employs an automated **8-stage validation suite**. Every logic module—from STEM mapping to risk calculation—is verified within a temporary **Sandbox environment** to ensure 100% data integrity and reproducibility.
