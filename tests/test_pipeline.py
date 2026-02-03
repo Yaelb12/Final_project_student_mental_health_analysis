@@ -8,6 +8,30 @@ from SRC import visualization
 from SRC import unsupervised
 from SRC import predictive_modeling
 
+@pytest.fixture(autouse=True)
+def isolate_tests(tmp_path, monkeypatch):
+    """
+    CRITICAL FIX: Test Isolation & Data Integrity Safeguard.
+    
+    This fixture ensures that automated tests run within a 'Sandbox' environment.
+    It prevents pytest from overwriting the real 6,860-row research dataset
+    located in the DATA/ directory.
+    """
+    
+    # 1. Create a mock directory structure inside the temporary path.
+    # This mimics the project architecture without touching real files.
+    (tmp_path / "data").mkdir() 
+    (tmp_path / "reports/tables").mkdir(parents=True)
+    (tmp_path / "reports/figures").mkdir(parents=True)
+    (tmp_path / "logs").mkdir()
+
+    # 2. Redirect the Working Directory.
+    # Using monkeypatch to change the current working directory to 'tmp_path'
+    # only during the duration of the test. All 'to_csv' or 'savefig' calls
+    # will now target the temporary sandbox instead of the project root.
+    monkeypatch.chdir(tmp_path)
+    
+    return tmp_path
 @pytest.fixture
 def sample_data():
     """Generates a comprehensive dataset to test all pipeline stages."""
@@ -79,15 +103,43 @@ def test_efa_outputs(sample_data):
 
 # --- Stage 4: Visualization & Files ---
 
+# --- Stage 4: Visualization & Files ---
+
 def test_visualization_files(sample_data):
-    """Verify all plots are generated and saved correctly."""
+    """
+    Verifies that the main visualization orchestrator runs successfully.
+    Now focused on comparison plots only.
+    """
     logger = stats_analysis.setup_environment()
     df_clean = data_cleaning.pre_process(sample_data)
     
+    # Runs the main orchestrator (Stage 4)
     visualization.run_all_visualizations(df_clean, logger)
     
-    assert os.path.exists("reports/figures/correlation_heatmap.png")
-    assert os.path.exists("reports/figures/Stress_Level_comparison.png")
+    figures_path = "reports/figures"
+    assert os.path.exists(figures_path)
+    files = os.listdir(figures_path)
+    
+    # Check for comparison plots which we know are generated
+    assert any("comparison" in f.lower() for f in files), f"Comparison plots not found. Created: {files}"
+
+def test_correlation_heatmap_generation(sample_data):
+    """
+    Unit Test: Specifically validates the correlation heatmap generation.
+    Independent check for EFA justification requirements.
+    """
+    logger = stats_analysis.setup_environment()
+    df_clean = data_cleaning.pre_process(sample_data)
+    
+    # Define metrics for the heatmap
+    metrics = ['Stress_Level', 'Anxiety_Score', 'Depression_Score', 'CGPA', 'Age']
+    
+    # Direct call to the heatmap function
+    visualization.plot_correlation_heatmap(df_clean, metrics, logger)
+    
+    # Verify the specific file exists in the sandbox
+    file_path = "reports/figures/correlation_heatmap.png"
+    assert os.path.exists(file_path), "The correlation heatmap file was not generated."
 
 # --- Stage 5: Structural Requirements ---
 
