@@ -57,13 +57,13 @@ Final_project_student_mental_health_analysis/
 
 Our model identifies disciplines where the risk of clinical mental health outcomes is significantly elevated (Clinical Score $\ge$ 4).
 
-| Academic Major | Depression Risk | Anxiety Risk | Stress Risk |
-| :--- | :---: | :---: | :---: |
-| **Computer Science** | **52.2%** | 18.9% | 18.0% |
-| **Law** | 20.1% | **48.8%** | 21.6% |
-| **Medical** | 19.5% | 20.5% | **49.1%** |
-| **Engineering** | 20.0% | 19.9% | 19.0% |
-| **Others** | 21.0% | 19.3% | 19.9% |
+| Academic Major       | Depression Risk | Anxiety Risk | Stress Risk |
+| :------------------- | :-------------: | :----------: | :---------: |
+| **Computer Science** |    **52.2%**    |    18.9%     |    18.0%    |
+| **Law**              |      20.1%      |  **48.8%**   |    21.6%    |
+| **Medical**          |      19.5%      |    20.5%     |  **49.1%**  |
+| **Engineering**      |      20.0%      |    19.9%     |    19.0%    |
+| **Others**           |      21.0%      |    19.3%     |    19.9%    |
 
 ---
 
@@ -71,15 +71,15 @@ Our model identifies disciplines where the risk of clinical mental health outcom
 
 ### 1. Anxiety Levels Across Disciplines
 
-Law students exhibit the highest average anxiety scores, a finding confirmed as statistically significant in our post-hoc analysis.
+Law students exhibit the highest average anxiety scores, a finding confirmed as statistically significant ($p < 0.05$) in our post-hoc analysis.
 
 ![Anxiety Comparison](reports/figures/Anxiety_Score_comparison.png)
 
-*Figure 1: Average Anxiety Scores by Course. The red asterisk (*) denotes statistical significance ($p < 0.05$).*
+*Figure 1: Average Anxiety Scores by Course. The red asterisk (*) denotes statistical significance.*
 
 ### 2. Internal Consistency Matrix
 
-The high correlation between Depression, Anxiety, and Stress metrics ($r > 0.6$) justifies the use of Factor Analysis (EFA).
+The high correlation between Depression, Anxiety, and Stress metrics ($r > 0.6$) justifies the use of Factor Analysis (EFA) to identify an underlying distress factor.
 
 ![Correlation Heatmap](reports/figures/correlation_heatmap.png)
 
