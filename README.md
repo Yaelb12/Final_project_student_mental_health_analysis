@@ -45,6 +45,8 @@ Final_project_student_mental_health_analysis/
 ├── main.py             # Entry point (Orchestrator)
 └── requirements.txt    # Project dependencies
 
+```
+
 ## How to Run
 1. **Install Dependencies**: 
    `pip install -r requirements.txt`
@@ -53,10 +55,6 @@ Final_project_student_mental_health_analysis/
 3. **Run Automated Tests**: 
    `python -m pytest tests/`
 
-
----
-
----
 
 ## Statistical Analysis and Key Findings
 
