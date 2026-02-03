@@ -47,6 +47,8 @@ Final_project_student_mental_health_analysis/
 
 ```
 
+![Anxiety Comparison](reports/figures/Anxiety_Score_comparison.png)
+
 ## How to Run
 1. **Install Dependencies**: 
    `pip install -r requirements.txt`
