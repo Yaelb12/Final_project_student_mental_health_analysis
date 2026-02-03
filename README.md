@@ -67,7 +67,8 @@ Our model identifies disciplines where the risk of clinical mental health outcom
 
 ---
 
-## 📉 Research Visualizations
+---
+
 ## 📉 Research Visualizations
 
 ### 1. Anxiety Levels Across Disciplines
@@ -76,7 +77,7 @@ Law students exhibit the highest average anxiety scores, a finding confirmed as 
 
 <img src="reports/figures/Anxiety_Score_comparison.png" width="800">
 
-*Figure 1: Average Anxiety Scores by Course. The red asterisk (*) denotes $p < 0.05$.*
+*Figure 1: Average Anxiety Scores by Course. The red asterisk (*) denotes statistical significance.*
 
 ### 2. Internal Consistency Matrix
 
