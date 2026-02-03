@@ -40,7 +40,7 @@ Final_project_student_mental_health_analysis/
 │   └── pipeline.log    # Full system history
 │
 ├── tests/              # Automated QA suite
-│   └── test_pipeline.py# 7-Stage Validation Suite
+│   └── test_pipeline.py# 8-Stage Validation Suite
 │
 ├── main.py             # Entry point (Orchestrator)
 └── requirements.txt    # Project dependencies
@@ -59,11 +59,11 @@ Our model identifies disciplines where the risk of clinical mental health outcom
 
 | Academic Major | Depression Risk | Anxiety Risk | Stress Risk |
 | :--- | :---: | :---: | :---: |
-| 💻 **Computer Science** | **52.2%** | 18.9% | 18.0% |
-| ⚖️ **Law** | 20.1% | **48.8%** | 21.6% |
-| 🩺 **Medical** | 19.5% | 20.5% | **49.1%** |
-| 🏗️ **Engineering** | 20.0% | 19.9% | 19.0% |
-| 🌐 **Others** | 21.0% | 19.3% | 19.9% |
+| **Computer Science** | **52.2%** | 18.9% | 18.0% |
+| **Law** | 20.1% | **48.8%** | 21.6% |
+| **Medical** | 19.5% | 20.5% | **49.1%** |
+| **Engineering** | 20.0% | 19.9% | 19.0% |
+| **Others** | 21.0% | 19.3% | 19.9% |
 
 ---
 
@@ -75,7 +75,7 @@ Law students exhibit the highest average anxiety scores, a finding confirmed as 
 
 ![Anxiety Comparison](reports/figures/Anxiety_Score_comparison.png)
 
-*Figure 1: Average Anxiety Scores by Course. The red asterisk (*) denotes $p < 0.05$.*
+*Figure 1: Average Anxiety Scores by Course. The red asterisk (*) denotes statistical significance ($p < 0.05$).*
 
 ### 2. Internal Consistency Matrix
 
