@@ -82,7 +82,7 @@ Since the broad STEM classification failed to provide strong predictive power, w
 ![Anxiety Comparison](reports/figures/Anxiety_Score_comparison.png)
 *Figure 2: Statistical comparison of Anxiety scores across disciplines, highlighting the significant elevation in specific professional tracks.*
 
-# 🔬 Advanced Statistical Diagnostics: Factor Analysis (EFA)
+### 3. Advanced Statistical Diagnostics: Factor Analysis (EFA)
 
 To determine if **Depression**, **Anxiety**, and **Stress** represent a single underlying factor of "Academic Distress" (Hypothesis 2), we conducted an Exploratory Factor Analysis (EFA) to test the feasibility of dimensionality reduction.
 
